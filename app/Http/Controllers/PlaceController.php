@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use App\Login;
 use App\Place;
+use Illuminate\Support\Facades\Input;
 
 class PlaceController extends Controller
 {
@@ -17,14 +18,23 @@ class PlaceController extends Controller
      */
     public function saveToken()
     {
-        return view('user.profile', ['user' => User::findOrFail($id)]);
+        $login = new Login;
+        $login->token = Input::get('token');
+        $login->save();
+        return response()->json(array("login"=>$login), 200);
     }
 
     public function savePlace(){
-
+        $place = new Place;
+        $place->login_id = Input::get('login_id');
+        $place->lat = Input::get('lat');
+        $place->lng = Input::get('lng');
+        $place->address = Input::get('address');
+        $place->save();
+        return response()->json(array("place"=>$place), 200);
     }
 
     public function getPlaces(){
-        
+        return response()->json(array("places"=>Place::all()), 200);
     }
 }

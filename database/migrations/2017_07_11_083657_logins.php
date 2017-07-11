@@ -18,6 +18,7 @@ class Logins extends Migration
             $table->increments('id');
             $table->string('token');
             $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
