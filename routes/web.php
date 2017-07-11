@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 Route::any('/places/save_token', 'PlaceController@saveToken');
 Route::any('/places/save_place', 'PlaceController@savePlace');
-Route::any('/players/get_place', 'PlaceController@getPlaces');
+Route::any('/places/get_places', 'PlaceController@getPlaces');

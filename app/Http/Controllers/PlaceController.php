@@ -35,6 +35,7 @@ class PlaceController extends Controller
     }
 
     public function getPlaces(){
-        return response()->json(array("places"=>Place::all()), 200);
+        $login_id = Input::get('login_id');
+        return response()->json(array("places"=>Place::where('login_id', $login_id)->get()), 200);
     }
 }
